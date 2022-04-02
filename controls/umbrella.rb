@@ -16,14 +16,14 @@ control 'umbrella-1.0' do
   only_if { os.family != 'windows' }
   if os.darwin?
     describe command('dig +time=10 debug.opendns.com txt') do
-        its('stdout') { should_not match 'Error' }
-        its('stderr') { should_not match 'Error' }
-        its('stdout') { should match 'organization id' }
-        its('stdout') { should match 'dnscrypt enabled' }
-        if umbrella_org_id
-          its('stdout') { should match "organization id #{umbrella_org_id}" }
-        end
+      its('stdout') { should_not match 'Error' }
+      its('stderr') { should_not match 'Error' }
+      its('stdout') { should match 'organization id' }
+      its('stdout') { should match 'dnscrypt enabled' }
+      if umbrella_org_id
+        its('stdout') { should match "organization id #{umbrella_org_id}" }
       end
+    end
   else
     describe command('nslookup -type=txt debug.opendns.com.') do
       its('stdout') { should_not match 'Error' }
