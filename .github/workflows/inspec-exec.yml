@@ -44,7 +44,7 @@ jobs:
           dig debug.opendns.com txt
           host www.google.com
           curl -v https://welcome.umbrella.com/
-          curl -vk https://examplemalwaredomain.com
+          curl -vk https://www.examplemalwaredomain.com
         continue-on-error: true
       - name: Run Inspec exec
         run: inspec exec .
